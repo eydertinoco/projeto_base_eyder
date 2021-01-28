@@ -1,0 +1,9 @@
+br\com\model\Data.class
+br\com\DAO\UsuarioDAO.class
+br\com\util\JSFUtil.class
+br\com\controller\UsuarioController.class
+br\com\controller\DataController.class
+br\com\model\Usuario.class
+br\com\util\SessionUtil.class
+br\com\service\UsuarioService.class
+br\com\util\ConnectionFactory.class

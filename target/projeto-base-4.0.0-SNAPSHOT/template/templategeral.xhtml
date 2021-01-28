@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<h:head>
+    <ui:insert name="title">
+        <title>Dreamer's Pen</title>
+    </ui:insert>
+
+    <link rel="StyleSheet" type="text/css" href="../css/estilo.css"/>
+    <link rel="StyleSheet" type="text/css" href="../css/bootstrap.css"/>
+</h:head>
+
+<h:body>
+
+    <div id="header">
+
+        <div class="header-div">
+            <p:graphicImage styleClass="logo" value="../imgs/1127836.png"/>
+
+            <p class="logo-titulo">Janela Narrativa</p>
+
+            <p class="logo-subtitulo">Navegue por diversos mundos</p>
+
+            <p class="logo-text-subtitulo">Projeto em Construção</p>
+
+            <!--<p class="logo-text-segundo-subtitulo">Teste</p>-->
+
+            <h:form id="formMenu">
+                <p:growl id="messages"/>
+
+                <p:menubar>
+                    <p:menuitem value="Home" url="../pages/home.faces"/>
+
+                    <p:menuitem value="Perfil" url="../pages/perfil.faces"/>
+
+                    <p:menuitem value="Usuários" url="../pages/listaUsuarios.faces"/>
+
+                    <p:submenu label="Histórias">
+                        <p:menuitem value="Original" url="#"/>
+                        <p:menuitem value="Fanfic" url="#"/>
+                    </p:submenu>
+
+
+                    <f:facet name="options">
+                        <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
+                        <p:commandButton value="#{usuarioMB.retornarSeEhCadastrar() ? 'Entrar' : 'Sair'}"
+                                         actionListener="#{usuarioMB.eleVaiEntrar()}"
+                                         update="dialogAcesso"/>
+                    </f:facet>
+                </p:menubar>
+            </h:form>
+
+        </div>
+
+    </div>
+
+    <div id="container">
+
+        <div id="avisos">
+            <ui:insert name="avisos"/>
+        </div>
+
+        <ui:insert name="body"/>
+
+    </div>
+
+    <div id="foot">
+        <div class="connect">
+            <a href="" target="_blank">
+                <img src="../imgs/facebook.png" alt="facebook"/></a>
+            <a href="" target="_blank">
+                <img src="../imgs/twitter.png" alt="twitter"/></a>
+        </div>
+
+        <p class="foot-text">Criado como teste em 2020. Todos os direitos reservados para nada, pois é tudo um teste.</p>
+    </div>
+
+
+
+
+
+
+    <!-- Campo de Entrar na Conta -->
+    <p:dialog id="dialogAcesso" widgetVar="dlgAcesso" minHeight="40" closable="false"
+              header="Acessar Conta">
+        <h:form id="formAcesso">
+            <p:growl id="msg-login"/>
+
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="email" value="Email:" />
+                <p:inputText id="email" value="#{usuarioMB.usuario.email}" required="true" label="username"
+                             requiredMessage="Email necessário!"/>
+
+                <h:outputLabel for="password" value="Senha:" />
+                <p:password id="password" value="#{usuarioMB.usuario.senha}" required="true" label="password"
+                            requiredMessage="Senha necessária!"/>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Entrar" update="msg-login formAcesso"
+                                     action="#{usuarioMB.entrarContaUsuario()}"
+                                     oncomplete="handleLoginRequest(xhr, status, args)" />
+                    <p:commandButton value="Cancelar" immediate="true" action="#{usuarioMB.cancelar()}"/>
+
+                    <br/><br/>
+                    <p:link value="Criar Conta" href="../pages/cadastro.faces"/>
+                    <br/>
+                </f:facet>
+            </h:panelGrid>
+
+        </h:form>
+    </p:dialog>
+
+    <!-- Campo de Sair da Conta -->
+    <p:dialog id="dialogExit" widgetVar="dlgExit" minHeight="40" closable="false"
+              header="Sair">
+        <h:form id="formExit">
+
+            <p:growl/>
+            <p:commandButton value="Exit" actionListener="#{usuarioMB.sair(usuarioMB.usuario)}"
+                             id="sairUsuario" title="Sair" update="formExit">
+                <p:confirm message="Você realmente quer sair?"/>
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"/>
+                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no"/>
+                </p:confirmDialog>
+            </p:commandButton>
+        </h:form>
+    </p:dialog>
+
+</h:body>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Cadastrar</title>
+</head>
+<ui:composition template="/template/templategeral.xhtml">
+    <ui:define name="body">
+        <div style="width: 95%">
+            <h:form id="form">
+
+                <p:growl id="growlPerfil"/>
+
+                <p:outputLabel value="Jogadores Cadastrados: "/>
+
+                <p:dataTable id="tabela" var="usuario" widgetVar="teste"
+                             emptyMessage="Atenção: Pessoa não encontrada." rows="10" paginator="true"
+                             value="#{usuarioMB.listaUsuario}">
+
+                    <p:column headerText="Id" filterBy="#{usuario.id}" filterMatchMode="contains">
+                        <h:outputText value="#{usuario.id}"/>
+                    </p:column>
+                    <p:column headerText="Usuario" filterBy="#{usuario.usuario}" filterMatchMode="contains">
+                        <h:outputText value="#{usuario.usuario}"/>
+                    </p:column>
+                    <p:column headerText="Senha">
+                        <h:outputText value="#{usuario.senha}"/>
+                    </p:column>
+                    <p:column headerText="Nome" filterBy="#{usuario.nome}" filterMatchMode="contains">
+                        <h:outputText value="#{usuario.nome}"/>
+                    </p:column>
+                    <p:column headerText="Email" filterBy="#{usuario.email}" filterMatchMode="contains">
+                        <h:outputText value="#{usuario.email}"/>
+                    </p:column>
+                    <p:column headerText="Membro desde">
+                        <h:outputText value="#{usuario.dataCriacao}"/>
+                    </p:column>
+                    <!--<p:column headerText="Sexo" filterBy="#{pessoa.sexo}" filterMatchMode="exact">-->
+                        <!--<f:facet name="filter">-->
+                            <!--<p:selectOneMenu onchange="PF('teste').filter()" styleClass="custom-filter">-->
+                                <!--<f:selectItem itemLabel="Selecione" itemValue="#{null}" noSelectionOption="true" />-->
+                                <!--<f:selectItem itemLabel="Masculino" itemValue="M" />-->
+                                <!--<f:selectItem itemLabel="Feminino" itemValue="F"/>-->
+                            <!--</p:selectOneMenu>-->
+                        <!--</f:facet>-->
+                        <!--<h:outputText value="#{pessoa.sexo == 'M' ? 'Masculino' : 'Feminino'}"/>-->
+                    <!--</p:column>-->
+
+                    <p:column headerText="Confugiração">
+
+                        <!-- COMANDO DE DELETAR PESSOA DO BANCO DE DADOS -->
+                        <!--<p:commandButton value="Deletar" actionListener="#{usuarioMB.dele}"-->
+                                         <!--id="iconOnlyDeletar" style="margin-right:40px; width:100%;" icon="pi pi-times-circle"-->
+                                         <!--title="Deletar" update="form">-->
+                            <!--<p:confirm message="Você realmente quer deletar?"/>-->
+
+                            <!--<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">-->
+                                <!--<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"/>-->
+                                <!--<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no"/>-->
+                            <!--</p:confirmDialog>-->
+                        <!--</p:commandButton>-->
+
+                        <!-- COMANDO DE EDITAR PESSOA NO BANCO DE DADOS -->
+                        <!--<p:commandButton actionListener="#{usuarioMB.abrirDialogEditarPessoa(pessoa)}"-->
+                                         <!--value="Editar" update="form-pessoa, dialogPessoa"-->
+                                         <!--style="margin-right:40px; width:100%;" icon="pi pi-pencil" title="Editar"/>-->
+
+                    </p:column>
+                </p:dataTable><br/>
+
+            </h:form>
+        </div>
+
+
+
+
+    </ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/template/templategeral.xhtml">
+    <ui:define name="body">
+
+
+        <h:form>
+<div class="ui-g">
+            <div class="ui-g-4">
+                <p:growl showDetail="true"/>
+
+                <p:panel header="Entrar">
+                    <h:panelGrid columns="4" cellpadding="5" columnClasses="ui-g-12 ui-md-6 ui-lg-6, ui-g-12 ui-md-6 ui-lg-6, ui-g-12 ui-md-6 ui-lg-6, ui-g-12 ui-md-6 ui-lg-6">
+                        <h:outputLabel for="email" value="Email:" />
+                        <p:inputText id="email" value="#{usuarioMB.usuario.email}">
+    <!--                        <f:validator validatorId="custom.emailValidator" />-->
+                        </p:inputText>
+
+                        <h:outputLabel for="senha" value="Senha:" />
+                        <p:inputText id="senha" value="#{usuarioMB.usuario.senha}" />
+                    </h:panelGrid>
+
+                    <div class="ui-g-12" align="center">
+                    <p:commandButton value="Esqueci Senha" />
+            </div>
+                    <div class="ui-g-12" align="center">
+                    <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true"/>
+                    </div>
+                    <div class="ui-g-12" align="center">
+                    <p:commandButton value="Criar Conta" />
+                    </div>
+
+                </p:panel>
+            </div>
+    </div>
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>
+
+</html>

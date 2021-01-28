@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Cadastrar</title>
+</head>
+<ui:composition template="/template/templategeral.xhtml">
+    <ui:define name="body">
+        <div>
+            <h:form id="formEditUsuario">
+                <h3>Informação do Usuário</h3>
+                <p:panelGrid columns="4">
+                    <p:outputLabel for="editUsuario" value="Usuario:" />
+                    <p:inputText id="editUsuario" value="#{usuarioMB.usuario.usuario}"
+                                 required="true" requiredMessage="Usuário necessário!"/>
+
+                    <p:outputLabel for="edtSenha" value="Senha:" />
+                    <p:inputText id="edtSenha" value="#{usuarioMB.usuario.senha}"
+                                 required="true" requiredMessage="Senha necessário!"/>
+
+                    <p:outputLabel for="editNome" value="Nome:" />
+                    <p:inputText id="editNome" value="#{usuarioMB.usuario.nome}"
+                                 required="true" requiredMessage="Nome necessário!"/>
+
+                    <p:outputLabel for="edtEmail" value="Email:" />
+                    <p:inputText id="edtEmail" value="#{usuarioMB.usuario.email}"
+                                 required="true" requiredMessage="Email necessário!"/>
+
+                    <p:commandButton value="Cadastrar" actionListener="#{usuarioMB.salvar()}"
+                                     update="formEditUsuario"/>
+                </p:panelGrid>
+
+            </h:form>
+        </div>
+
+
+
+
+
+
+
+
+
+    </ui:define>
+</ui:composition>
+
+</html>

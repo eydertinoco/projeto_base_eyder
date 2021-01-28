@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:P="http://java.sun.com/jsf/html">
+
+<ui:composition template="/template/templategeral.xhtml">
+    <ui:define name="body">
+        <div style="width: 100%;">
+            <p:panel id="basic" header="Página Usuário" style="margin-bottom:20px">
+                <div class="ui-g">
+
+                    <h:form id="avatarUsuarioLog">
+                        <div class="ui-g-12 ui-md-6 ui-lg-2">
+                            <p:graphicImage value="../imgs/selo-nota10.jpg" width="120px" height="120px"/>
+                        </div>
+                    </h:form>
+
+                    <h:form id="informacaoUsuarioLog">
+                        <div class="ui-g-12 ui-md-6 ui-lg-10">
+                            <h:panelGrid columns="4" columnClasses="label, value" style="text-align: center;">
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                        <h:outputText value="Nome:" style="font-size: x-small; font-family: bold;"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                        <h:inputText value="Seu Nome Aqui" />
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                        <h:outputText value="Email:" style="font-size: x-small; font-family: bold;"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                        <h:inputText value="Seu Email aqui" />
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                        <h:outputText value="Gênero:" style="font-size: x-small; font-family: bold;"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                        <h:inputText value="Seu Gênero aqui" />
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                        <h:outputText value="Nascimento:" style="font-size: x-small; font-family: bold;"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                        <h:inputText value="Sua data de nascimento aqui" />
+                                    </div>
+
+                                </div>
+                            </h:panelGrid>
+                        </div>
+                    </h:form>
+
+                </div>
+            </p:panel>
+
+
+            <h:form id="formPerfilUsuario">
+                <p:growl/>
+
+                <p:panelGrid id="painelUsuario" columns="2" value="#{usuarioMB.listaUsuario}" style="width: 20%">
+                    <f:facet name="header">
+                        <p:graphicImage value="../imgs/selo-nota10.jpg" width="120px" height="120px"/>
+                    </f:facet>
+
+                    <h:outputText value="Nome:" style="font-size: x-small; font-family: bold;"/>
+                    <h:outputText value="#{usuarioMB.usuario.usuario}" />
+
+                    <h:outputText value="Email:" style="font-size: x-small; font-family: bold;"/>
+                    <h:outputText value="#{usuarioMB.usuario.email}" />
+
+                    <h:outputText value="Gênero:" style="font-size: x-small; font-family: bold;"/>
+                    <h:outputText value="#{usuarioMB.usuario.genero}" />
+
+                    <h:outputText value="Nascimento:" style="font-size: x-small; font-family: bold;"/>
+                    <h:outputText value="#{usuarioMB.usuario.dataNasc}" />
+
+                    <h:outputText value="Membro:" style="font-size: x-small; font-family: bold;"/>
+                    <h:outputText value="#{usuarioMB.usuario.dataCriacao}" />
+                </p:panelGrid>
+
+
+
+
+            </h:form>
+        </div>
+
+        <div>
+            <h:form>
+                <h3>Responsive (PrimeFlex, p-align-baseline)</h3>
+                <p:panelGrid columns="4" layout="grid" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" contentStyleClass="p-align-baseline ui-fluid">
+                    <p:outputLabel for="text1" value="Text 1" />
+                    <p:inputText id="text1" />
+
+                    <p:outputLabel for="text2" value="Text 2" />
+                    <p:inputText id="text2" />
+
+                    <p:outputLabel for="date" value="Date" />
+                    <p:datePicker id="date" showIcon="true" style="width:auto" />
+
+                    <p:outputLabel for="checkbox" value="Checkbox" />
+                    <p:selectBooleanCheckbox id="checkbox" itemLabel="Checkbox" />
+
+                    <p:outputLabel for="text3" value="Text 3" />
+                    <p:inputText id="text3" />
+
+                    <p:outputLabel for="selectOne" value="SelectOne (misaligned)" />
+                    <p:selectOneMenu id="selectOne">
+                        <f:selectItem itemLabel="Select One" itemValue="" />
+                        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                        <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                        <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                    </p:selectOneMenu>
+                </p:panelGrid>
+
+            </h:form>
+
+        </div>
+
+
+
+        <div>
+            <h:form>
+                <p:panel id="toggleable" header="Título da História" widgetVar="panel" style="margin-bottom:20px">
+
+    <!--                <p:ajax event="close" listener="#{panelView.onClose}" update="msgs" />-->
+    <!--                <p:ajax event="toggle" listener="#{panelView.onToggle}" update="msgs" />-->
+
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage value="../imgs/3_ninjas_kick_back.jpg" width="150px" height="150px"/>
+                        <h:outputText
+                                value="Francis Ford Coppola's legendary continuation and sequel to his landmark
+                        1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's
+                        spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.
+                        In the early 1900s, the child Vito flees his Sicilian village for America after the local
+                        Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and
+                        growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his
+                        customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />
+                    </h:panelGrid>
+
+<!--                    <f:facet name="options">-->
+<!--                        <p:menu>-->
+<!--                            <p:submenu label="Settings">-->
+<!--&lt;!&ndash;                                <p:menuitem value="Toggle" url="#" icon="pi pi-clone" onclick="PF('panel').toggle()" />&ndash;&gt;-->
+<!--&lt;!&ndash;                                <p:menuitem value="Remove" url="#" icon="pi pi-times" onclick="PF('panel').close()" />&ndash;&gt;-->
+<!--                            </p:submenu>-->
+<!--                        </p:menu>-->
+<!--                    </f:facet>-->
+                </p:panel>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>
+</html>
